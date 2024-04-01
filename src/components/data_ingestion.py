@@ -1,11 +1,7 @@
-## read data 
-## perform train test split
-
-
-
-
 import os
 import sys
+
+
 from src.exception import CustomException
 from src.logger import logging
 import pandas as pd
@@ -18,7 +14,8 @@ from src.components.data_transformation import DataTransformationConfig
 
 from src.components.model_trainer import ModelTrainerConfig
 from src.components.model_trainer import ModelTrainer
-
+## read data 
+## perform train test split
 
 
 @dataclass

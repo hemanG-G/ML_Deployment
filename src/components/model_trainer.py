@@ -46,6 +46,9 @@ class ModelTrainer:
                 "CatBoosting Regressor": CatBoostRegressor(verbose=False),
                 "AdaBoost Regressor": AdaBoostRegressor(),
             }
+
+
+            ## hyper parameter tuning
             params={
                 "Decision Tree": {
                     'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
@@ -84,6 +87,9 @@ class ModelTrainer:
                 
             }
 
+
+
+            ## evaluate models method in utils  
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
                                              models=models,param=params)
             
@@ -101,11 +107,11 @@ class ModelTrainer:
                 raise CustomException("No best model found")
             logging.info(f"Best found model on both training and testing dataset")
 
-            save_object(
+            save_object( ## saving pkl file of model
                 file_path=self.model_trainer_config.trained_model_file_path,
                 obj=best_model
             )
-
+ 
             predicted=best_model.predict(X_test)
 
             r2_square = r2_score(y_test, predicted)

@@ -1,4 +1,6 @@
 import sys
+import os
+
 import pandas as pd
 from src.exception import CustomException
 from src.utils import load_object
@@ -25,7 +27,7 @@ class PredictPipeline:
 
 
 
-class CustomData:
+class CustomData: ## map input data with data sent to backend 
     def __init__(  self,
         gender: str,
         race_ethnicity: str,
@@ -49,7 +51,7 @@ class CustomData:
 
         self.writing_score = writing_score
 
-    def get_data_as_data_frame(self):
+    def get_data_as_data_frame(self): ## to data frame
         try:
             custom_data_input_dict = {
                 "gender": [self.gender],
@@ -61,7 +63,7 @@ class CustomData:
                 "writing_score": [self.writing_score],
             }
 
-            return pd.DataFrame(custom_data_input_dict)
+            return pd.DataFrame(custom_data_input_dict) ## convert to dataframe
 
         except Exception as e:
             raise CustomException(e, sys)

@@ -14,9 +14,9 @@ import os
 
 from src.utils import save_object
 
-@dataclass
+@dataclass ## Q : why is dataclass Required ? 
 class DataTransformationConfig:
-    preprocessor_obj_file_path=os.path.join('artifacts',"proprocessor.pkl")
+    preprocessor_obj_file_path=os.path.join('artifacts',"proprocessor.pkl") ##path of preprocessor 
 
 class DataTransformation:
     def __init__(self):
@@ -36,8 +36,9 @@ class DataTransformation:
                 "lunch",
                 "test_preparation_course",
             ]
-
-            num_pipeline= Pipeline(
+            # Numerical transformation Pipeline
+            # from sci - kit lib data preprossing fn 
+            num_pipeline= Pipeline( 
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),
                 ("scaler",StandardScaler())
@@ -45,12 +46,14 @@ class DataTransformation:
                 ]
             )
 
+            
+            # Categorical transformation Pipeline
             cat_pipeline=Pipeline(
 
                 steps=[
-                ("imputer",SimpleImputer(strategy="most_frequent")),
-                ("one_hot_encoder",OneHotEncoder()),
-                ("scaler",StandardScaler(with_mean=False))
+                ("imputer",SimpleImputer(strategy="most_frequent")), ## handle missing values 
+                ("one_hot_encoder",OneHotEncoder()), 
+                ("scaler",StandardScaler(with_mean=False))         
                 ]
 
             )
@@ -68,7 +71,7 @@ class DataTransformation:
 
             )
 
-            return preprocessor
+            return preprocessor ## data transformation object
         
         except Exception as e:
             raise CustomException(e,sys)
@@ -83,7 +86,7 @@ class DataTransformation:
 
             logging.info("Obtaining preprocessing object")
 
-            preprocessing_obj=self.get_data_transformer_object()
+            preprocessing_obj=self.get_data_transformer_object() ## data tfr object
 
             target_column_name="math_score"
             numerical_columns = ["writing_score", "reading_score"]
@@ -118,7 +121,7 @@ class DataTransformation:
             return (
                 train_arr,
                 test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
+                self.data_transformation_config.preprocessor_obj_file_path, 
             )
         except Exception as e:
             raise CustomException(e,sys)
