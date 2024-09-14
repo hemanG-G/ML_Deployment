@@ -4,16 +4,6 @@
 
 **The dataset** The goal of this project is to understand the influence of the parents background, test preparation, and various other variables on the students math score.
 
-## Life cycle of Machine learning Project
-### Understanding the Problem Statement
-1. Data Collection
-2. Data Checks to perform
-3. Exploratory data analysis
-4. Data Pre-Processing
-5. Model Training
-6. Choose best model
-
-
 
 There are 8 independent variables:
 
