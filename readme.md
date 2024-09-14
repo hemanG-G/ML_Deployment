@@ -23,7 +23,8 @@ Dataset Source Link :
 [https://www.kaggle.com/datasets/spscientist/students-performance-in-exams?resource=download](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams?resource=download)
 
 #UI
-![image](https://github.com/user-attachments/assets/4f9a38b9-af55-4193-9106-e21bfb8fdefb)
+![HomepageUI](./stdperformanceindicator.gif)
+
 
 
 # Project Development Approach
